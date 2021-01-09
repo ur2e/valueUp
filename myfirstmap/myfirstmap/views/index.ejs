@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>myfirstmap</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!-- style.css와 연결해줌 -->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q3nk8c41kb"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6069d7727b521073bf381bf723f35e6b&libraries=services"></script>
+</head>
+<body>
+     <a href="https://user-images.githubusercontent.com/59385635/99191174-56dc4100-27ae-11eb-8c49-5e502d34c76e.PNG">
+     <input id="tutorial"
+         type="button"
+          value="tutorial" onclick="window.location=src">
+     </input> </a>
+ 
+<div id="navbar">따릉이 타고 용산 한바퀴</div>
+<!-- <div id="infoBox">
+   <div id="infoTitle">DEP 후암시장 - ARR 현대카드 뮤직 라이브러리</div>
+   <div id="infoContent"></div>
+</div> -->
+<div id="search">
+  <input id="search_input" placeholder="목적지를 입력해주세요"/>
+  <button id ="search_button">검색</button>
+</div>
+<div id="current">현재위치</div>
+<!-- <div id="tutorial">tutorial</div> -->
+<div id="language">language setting</div>
+<div id="map" style="width:100%;height:100vh;"></div> <!-- 높이 꽉차게 -->
+<script type="text/javascript" src="/data/data.js"></script> <!-- 외부 데이터를 여기 index.ejs안에서 활용하겠다, data변수 스크립트 안에서 사용가능해짐 -->
+<script type="text/javascript" src="/data/rental.js"></script>
+
+<div id="wrap" class="section">
+  <div id="map" style="width:100%;height:100%;">
+      <!-- <div class="buttons">
+          <input id="bicycle" type="button" value="자전거" class="control-btn" /><br />
+      </div> -->
+  </div>
+  <code id="snippet" class="snippet"></code>
+</div>
+
+
+<script>
+  
+
+var mapOptions = {
+    // center: new naver.maps.LatLng(37.3595704, 127.105399),
+    center: new naver.maps.LatLng(37.545878, 126.964725),
+    zoom: 14 //바꿈
+};
+var map = new naver.maps.Map('map', mapOptions);
+
+var arr = [
+  "후암시장","현대카드 뮤직 라이브러리","c",'d'
+];
+// 관광지 경로 데이터
+naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/mltoha.json',
+            dataType: 'json',
+            success: startDataLayer
+        });
+    });
+
+    function startDataLayer(geojson){
+        map.data.addGeoJson(geojson);
+
+        const t = arr[0];
+        const t2 = arr[1];
+
+        map.data.setStyle(function(feature){
+            var color = '#EB5757';
+            //palevioletred
+            //191970
+            //indigo
+            //#0b4068
+            if (feature.getProperty('color')) {
+              color = feature.getProperty('color');
+            }
+            return {
+                fillColor : 'white',
+                strokeColor: color,
+                strokeWeight : 4,
+                icon : null
+            };
+        });
+        map.data.addListener('click', function(e) {
+        e.feature.setProperty('isColorful', true);
+        if(map.data.getMap()){
+          //$('#infoContent').text();
+          //$('#infoContent').text('');
+          map.data.revertStyle();
+        }
+        });
+
+        map.data.addListener('dblclick', function(e) {
+          // $('#infoContent').text();
+          // $('#infoContent').text(t+"-"+t2);
+          map.data.overrideStyle(e.feature, {
+              strokeColor: 'red',
+              strokeWeight: 6
+          });
+          // $('#infoContent').text();
+          // $('#infoContent').text(t+"-"+t2);
+        var bounds = e.feature.getBounds();
+
+        if (bounds) {
+            map.panToBounds(bounds);
+        }
+    });
+    };
+
+    /* 수정 1번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/kktoksj.json',
+            dataType: 'json',
+            success: startDataLayer10
+        });
+    });
+    function startDataLayer10(geojson){
+        map.data.addGeoJson(geojson);
+    }
+
+    /* 수정 2번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/ksjtoyjd.json',
+            dataType: 'json',
+            success: startDataLayer11
+        });
+    });
+    function startDataLayer11(geojson){
+        map.data.addGeoJson(geojson);
+    }
+
+    /* 수정 3번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/yjdtosmj.json',
+            dataType: 'json',
+            success: startDataLayer12
+        });
+    });
+    function startDataLayer12(geojson){
+        map.data.addGeoJson(geojson);
+    }
+    
+    /* 수정 4번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/dmtohg.json',
+            dataType: 'json',
+            success: startDataLayer13
+        });
+    });
+    function startDataLayer13(geojson){
+        map.data.addGeoJson(geojson);
+    }
+    /* 수정 5번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/hatohc.json',
+            dataType: 'json',
+            success: startDataLayer14
+        });
+    });
+    function startDataLayer14(geojson){
+        map.data.addGeoJson(geojson);
+    }
+    /* 수정 6번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/hctodm.json',
+            dataType: 'json',
+            success: startDataLayer15
+        });
+    });
+    function startDataLayer15(geojson){
+        map.data.addGeoJson(geojson);
+    }    
+
+    /* 수정 7번 레이어*/
+    naver.maps.Event.once(map, 'init_stylemap', function () {
+        $.ajax({ 
+            url: 'https://valupupdata.s3.amazonaws.com/modifydata/smjtoml.json',
+            dataType: 'json',
+            success: startDataLayer16
+        });
+    });
+    function startDataLayer16(geojson){
+        map.data.addGeoJson(geojson);
+    }
+//관광지 경로 데이터 끝
+
+var markerList = []; //마커 배열
+var infowindowList = [];
+for(var i in data){ // 데이터 여러개이므로 for문돌림
+  var target = data[i];
+  var latlng = new naver.maps.LatLng(target.lat, target.lng),
+  marker = new naver.maps.Marker({
+    map: map,
+    position: latlng,
+    icon: {
+      content: "<div class='marker'></div>",
+      anchor: new naver.maps.Point(12, 12) // 중심 좌표 설정(픽셀 24로 했어서 반으로)
+    },
+  });
+  // 클래스 설정
+  var content = `<div class='infowindow_wrap'> 
+    <div class='infowindow_title'>${target.title}</div>
+    <div class='infowindow_content'>${target.content}</div>
+  </div>`//``:string넣을 수 있음, `${target}`: 안에 변수 쓸수 있음 -> 변수이름이 string값으로 표시됨
+  var infowindow = new naver.maps.InfoWindow({ //위 클래스 토대로 infowindow스타일 css에서 정의해줄 것이므로 미리 정의되는 것들 투명으로 하여 커스터마이징할 수 있게 함
+    content: content,
+    backgroundColor: "#00ff0000", //투명
+    borderColor : "#00ff0000",
+    anchorSize : new naver.maps.Size(0,0) //말풍선 형태 꼬리표(지금은 나오지 않게 설정)
+  })
+  //클릭했을때 몇번째 마커를 클릭했고 몇번째 윈도우를 표시해야하는지 list에 담김
+  markerList.push(marker);
+  infowindowList.push(infowindow);
+}
+
+var rentalList = []; // 대여소 배열
+for(var i in rental){
+    var target = rental[i];
+    var latlng = new naver.maps.LatLng(target.lat, target.lng),
+    r_marker = new naver.maps.Marker({
+        map: map,
+        position: latlng,
+        icon: {
+            content: "<div class='r_marker'></div>",
+            anchor: new naver.maps.Point(10,10)
+         },
+     });
+     rentalList.push(r_marker);
+}
+
+for(var i=0, ii=markerList.length; i<ii; i++){ //i가 0부터 1까지 두번돌게됨
+  naver.maps.Event.addListener(map, "click", ClickMap(i)); //맵을 클릭했을때 클릭맵함수 호출
+  naver.maps.Event.addListener(markerList[i],"click",getClickHandler(i)); //네이버맵에 이벤트. 클릭했을때 핸들러함수 실행
+}
+function ClickMap(i){
+  return function(){
+    var infowindow = infowindowList[i];
+    infowindow.close()
+  }
+}
+function getClickHandler(i){ //클릭했을때 띄우고 없애고 하는 기능
+  return function(){ //클릭한 i번째 마커가 변수에 담김
+    var marker = markerList[i];
+    var infowindow = infowindowList[i];
+    //infowindow를 지도에 표시해줌
+    if(infowindow.getMap()){ //현재 infow가 지도에 표시되어 있는지 t/f반환
+      infowindow.close();
+    }else{
+      infowindow.open(map, marker); //마커위에 infow열림. 
+    }
+  }
+}
+// marker = new naver.maps.Marker({ // 마커변수
+//   map: map,
+//   position: new naver.maps.LatLng(37.3595704, 127.105399), // 위도경도 중앙에
+//   icon:{
+//     content: "<div class='marker'></div>"
+//   },
+// })
+// $('#current').click(() => {
+
+// });
+let currentUse = true;
+$('#current').click(() => {
+  //alert("클릭 이벤트");
+  if('geolocation' in navigator){ //geo~ 이미 크롬 등에 내장
+    navigator.geolocation.getCurrentPosition(function(position){ //position에 현재위치에 대한 정보 담김:위도, 경도 등
+      const lat = position.coords.latitude; //위도 정보 lat이라는 상수에 담김
+      const lng = position.coords.longitude; //경도 정보
+      const latlng = new naver.maps.LatLng(lat, lng); //네이버지도에 사용하도록 포맷 변경
+      //true면 마커 최초 1회만 생성해줌
+      if(currentUse){
+        marker = new naver.maps.Marker({ //위치 알았으면 띄워줄 마커 필요
+          map: map,
+          position: latlng,
+          icon: {
+            content: '<img class="pulse" draggable="false" unselectable="on" src="https://myfirstmap.s3.ap-northeast-2.amazonaws.com/circle.png">',//드래그도, 선택도 불가능
+            anchor: new naver.maps.Point(11,11), //중심좌표 (11,11)
+          },
+        });
+        currentUse = false;
+      }
+      map.setZoom(14, false); //레벨 14, 이동하는 애니메이션은 주지 않음
+      map.panTo(latlng); //이동
+    });
+  }else{
+    alert("위치정보 사용 불가능");
+  }
+});
+let ps = new kakao.maps.services.Places(); //ps-목적지검색 관련 중요 함수 : 카카오 api통해 선언해줌
+let search_arr = [];
+//키보드 눌렸을때 search_input에 들어오는 단어 이벤트 실행
+$("#search_input").on("keydown", function(e){
+  if(e.keyCode === 13){ //13은 enter키
+    let content = $(this).val(); //this는 search_input을 가리킴. 입력한 값이 content에 담김.
+    ps.keywordSearch(content,placeSearchCB);
+  }
+})
+$("#search_button").on("click", function(e){ //검색버튼 눌렀을때
+  let content = $("#search_input").val();
+  ps.keywordSearch(content,placeSearchCB);
+})
+function placeSearchCB(data, status, pagination){ //data: 목적지 바탕으로 검색한 결과, status:카카오 서버 상태, pagination:검색결과가 얼마나 있는지에 관한값(이건사용x)
+  if(status === kakao.maps.services.Status.OK){
+    let target = data[0];
+    // console.log(target) - 로그 뜨는 것 확인. F12로 배열 15개 들어오는 것 볼 수 있음. 0번이 가장 근접한 결과
+    const lat = target.y; //위도
+    const lng = target.x; //경도
+    const latlng = new naver.maps.LatLng(lat, lng); //네이버지도에 위경도 표시
+    marker = new naver.maps.Marker({
+      position: latlng,
+      map: map
+    })
+    if(search_arr.length == 0){
+      search_arr.push(marker)
+    }else{
+      search_arr.push(marker)
+      let pre_marker = search_arr.splice(0,1); //이전 마커 지우려고 추출함
+      pre_marker[0].setMap(null);
+    }
+    map.setZoom(14,false);
+    map.panTo(latlng);
+  }else{
+    alert("결과가 없습니다.")
+  }
+}
+//----------------------------------------------------
+// var arrayOfCoords = [
+//     new naver.maps.LatLng(37.544265, 126.959174),
+//     new naver.maps.LatLng(37.542682, 126.963928),
+//     new naver.maps.LatLng(37.542408, 126.969224),
+//     new naver.maps.LatLng(37.545688, 126.966776),
+//     new naver.maps.LatLng(37.554632, 126.963155),
+//     new naver.maps.LatLng(37.552812, 126.976441),
+//     new naver.maps.LatLng(37.539676, 127.012364),
+//     new naver.maps.LatLng(37.539676, 127.012364),
+//     new naver.maps.LatLng(37.539937, 127.000554),
+//     new naver.maps.LatLng(37.523286, 126.980870),
+//     new naver.maps.LatLng(37.526279, 126.980214)
+// ];
+
+// var polyline = new naver.maps.Polyline({
+//     map: map,
+//     path: arrayOfCoords,
+//     clickable: true, // 사용자 인터랙션을 받기 위해 clickable을 true로 설정합니다.
+//     strokeColor: '#5347AA',
+//     strokeStyle: 'longdash',
+//     strokeOpacity: 0.3,
+//     strokeWeight: 5
+// });
+// var contentString = [
+//     '<div class="infowindow_wrap">',
+//     '   <h3>서울특별시청</h3>',
+//     '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br>',
+//     '       <img src="./img/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br>',
+//     '       02-120 | 공공,사회기관 > 특별,광역시청<br>',
+//     '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+//     '   </p>',
+//     '</div>'
+// ].join('');
+
+
+// var infow = new naver.maps.InfoWindow({
+//     content: contentString,
+//     backgroundColor: "#00ff0000", //투명
+//     borderColor : "#00ff0000",
+//     anchorSize : new naver.maps.Size(0,0)
+// });
+// naver.maps.Event.addListener(m, 'click', function() {
+//     if (infow.getMap()) {
+//         infow.close();
+//     } else {
+//         infow.open(map, m); // m대신 경로 위에 누를 때 뜨는걸로 고치는 방법?
+//     }
+// });
+// naver.maps.Event.addListener(startDataLayer, 'click', function() {
+//   if (infow.getMap()) {
+//         infow.close();
+//     } else {
+//         infow.open(map, arrayOfCoords[0]); // m대신 경로 위에 누를 때 뜨는걸로 고치는 방법?
+//     }
+// polyline.setOptions({
+//     strokeColor: '#E51D1A',
+//     strokeStyle: 'solid',
+//     strokeOpacity: 1
+// });
+// });
+
+// naver.maps.Event.addListener(polyline, 'mouseover', function() {
+
+// polyline.setOptions({
+//     strokeColor: '#E51D1A',
+//     strokeStyle: 'solid',
+//     strokeOpacity: 1
+// });
+// });
+
+// naver.maps.Event.addListener(polyline, 'mouseout', function() {
+
+// polyline.setOptions({
+//     strokeColor: '#5347AA',
+//     strokeStyle: 'longdash',
+//     strokeOpacity: 0.5
+// });
+// });
+
+</script>
+<!-- C:\Users\qorrh\Documents\myfirstmap\myfirstmap\public\html -->
+</body>
+</html>
