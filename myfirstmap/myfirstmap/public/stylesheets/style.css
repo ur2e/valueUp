@@ -1,0 +1,189 @@
+body {
+  padding: 0px !important;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin : 0px !important;
+}
+
+#wrap .buttons{
+  position: absolute;
+  top : 100px;
+  left: 100px;
+  background: white;
+  z-index: 10000;
+  padding: 15;
+}
+
+.marker{ 
+  border: 3px solid white;
+  background: rgb(0, 171, 81);
+  opacity: 1;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.r_marker{
+  border: 2px solid white;
+  background: rgb(128, 126, 120);
+  opacity: 1;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+#navbar{
+  height: 50px;
+  width: 100%;
+  background: #262626;
+  color: white;
+  font-weight: bolder;
+  font-size: 25px;
+  display: flex; /* 가운데정렬,수직정렬 쉽게 해줌 */
+  justify-content: center;
+  align-items: center;
+}
+
+#infoBox{
+  position: absolute; /* 지도 위에(다른 컴포넌트 위에) 띄워주고자 함 */
+  top: 100px;
+  z-index: 10000;
+  /* 컴포넌트에 순서를 정하는 것: 기본 지도가 1000이므로 그것보다 큰 10000으로 주어 지도 위에 띄워줌 */
+  background: #262626;
+  right:20px;
+  padding: 15px;
+  border: 4px solid rgba(255, 255, 255, 0.2); /* opacity 0.2는 투명도 */
+  color : white;
+  border-radius: 4px;
+  text-align: center;
+}
+
+#infoTitle{
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+/* 관광지 점 */
+
+.infowindow_wrap{
+  background: white;
+  padding : 20px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.infowindow_title{
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.infowindow_content{
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.infowindow_data{
+  font-size: 13px;
+  font-weight: normal;
+}
+
+#current{
+  position: absolute;
+  bottom: 20px; /*위에서 180px만큼 띄워줌*/
+  z-index: 10000;
+  background: #262626;
+  left: 20px;
+  padding: 15px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  color : white;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer; /*마우스 올라갔을때 손가락모양*/
+  font-weight: bolder;
+}
+
+#tutorial{
+  position: absolute;
+  top: 100px; /*위에서 180px만큼 띄워줌*/
+  z-index: 10000;
+  background: #262626;
+  left: 20px;
+  padding: 15px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  color : white;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer; /*마우스 올라갔을때 손가락모양*/
+  font-weight: bolder;
+}
+
+#language{
+  position: absolute;
+  top: 180px; /*위에서 180px만큼 띄워줌*/
+  z-index: 10000;
+  background: #262626;
+  left: 20px;
+  padding: 15px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  color : white;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer; /*마우스 올라갔을때 손가락모양*/
+  font-weight: bolder;
+}
+
+.pulse{ /*이미지를 pulse라는 클래스줬었음*/
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgb(255,0,0);
+  animation: pulse 1.7s infinite; /*파장 애니메이션 무한대로*/
+}
+
+#search{
+  position: absolute;
+  top: 100px;
+  left:130px;
+  padding: 15px;
+  z-index: 10000;
+  background: white;
+  border: 4px solid rgba(0,0,0,0.2);
+  border-radius: 4px;
+  text-align: center;
+}
+
+#search_input{
+  border: none;
+}
+#search_input:focus{ /*검색어 찾기 위해 마우스 클릭하거나 검색어 입력 했을때 파란테두리 뜨는 것 안뜨게함*/
+  outline: none;
+}
+
+@keyframes pulse{ /*시간대별로 애니메이션 어떻게 작용할지 미리 명시해주는 것*/
+  0%{
+    box-shadow: 0 0 0 0 rgba(204, 49, 44, 0.4);
+    -moz-box-shadow: 0 0 0 0 rgba(204, 49, 44, 0.4); /*파이어폭스 -moz붙여줌*/
+  }
+  70%{
+    box-shadow: 0 0 0 20px rgba(204, 49, 44, 0);
+    -moz-box-shadow: 0 0 0 20px rgba(204, 49, 44, 0);
+  }
+  100%{
+    box-shadow: 0 0 0 0 rgba(204, 49, 44, 0);
+    -moz-box-shadow: 0 0 0 0 rgba(204, 49, 44, 0);
+  }
+}
+
+@-webkit-keyframes pulse{ /*-webkit은 크롬*/
+  0%{
+    box-shadow: 0 0 0 0 rgba(204, 49, 44, 0.4);
+    -moz-box-shadow: 0 0 0 0 rgba(204, 49, 44, 0.4);
+  }
+  70%{
+    box-shadow: 0 0 0 20px rgba(204, 49, 44, 0);
+    -moz-box-shadow: 0 0 0 20px rgba(204, 49, 44, 0);
+  }
+  100%{
+    box-shadow: 0 0 0 0 rgba(204, 49, 44, 0);
+    -moz-box-shadow: 0 0 0 0 rgba(204, 49, 44, 0);
+  }
+}
