@@ -1,0 +1,36 @@
+<html>
+<head> 
+<meta charset="EUC-KR">
+<title>ValueUp</title>
+<script type="text/javascript">
+    function change(color)
+    {
+        document.getElementById('button').style.background=color;
+        document.getElementById('button').style.color="white";
+    }
+</script>
+    <style>
+    #tag_btn button{
+        border: 1px solid skyblue;
+        background-color: rgba(0,0,0,0);
+        color: skyblue;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    #tag_btn button:hover{
+        color:white;
+        background-color: skyblue;
+    }
+    </style>
+</head> 
+<body> 
+    <div id="tag_btn">
+        <button type="button" id="button" class="clicked" onclick="change('blue')">Primary</button>
+        <button type="button" id="button" class="clicked">Secondary</button>
+        <button type="button" id="button" class="clicked">Success</button>
+        <button type="button" id="button" class="clicked">Info</button>
+        <button type="button" id="button" class="clicked">Warning</button>
+        <button type="button" id="button" class="clicked">Danger</button>
+    </div>  
+</body>
+</html>
