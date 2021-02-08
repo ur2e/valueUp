@@ -5,23 +5,30 @@
         <meta name="viewport" content="width=device-width", initial-scale=1.0 />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="style.css" />
-        <title>PaintJS</title>
+        <title>TAGBOX</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="./inputTags.jquery.js"></script>
     </head>
     <body>
-        <input type="text" id="tagBox" />
+        <input type="text" value="one,two,three" id="tags" />
+        <div id="tagbox-outer">
+            <div class="table">
+                <ul id="horizontal-list">
+                    <li>a</li>
+                </ul>
+            </div>
+        </div>
         <div class="timeTags">
-            <button id="timeTag">A</button>
-            <button id="timeTag">B</button>
-            <button id="timeTag">C</button>
-            <button id="timeTag">D</button>
+            <button type="btton" id="timeTag" value="A">A</button>
+            <button id="timeTag" value="B">B</button>
+            <button id="timeTag" value="C">C</button>
+            <button id="timeTag" value="D">D</button>
         </div>
         <div class="themeTags">
             <button id="themeTag">short</button>
             <button id="themeTag">long</button>
         </div>
-    </div>
         <script src="app.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="/path/to/inputTags.jquery.js"></script>
+        <script src="tagbox.js"></script>
     </body>
 </html>
