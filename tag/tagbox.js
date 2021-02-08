@@ -1,3 +1,12 @@
+/*  투두리스트 아이디어 차용
+투두리스트 input : text
+태그박스리스트 input : 선택된 태그박스의 textField 
+
+투두리스트 아이템 :  아이콘 투두제목 >> 아이콘 누르면 delete
+태그박스리스트 아이템 : 하얀색 배경 + 하늘색 border의 태그제목 >> 탭하면 delete
+*/
+
+
 const timeTags = document.getElementsByClassName("timeTags"),
     themeTags = document.getElementsByClassName("themeTags"),
     tagList = document.querySelector(".horizontal-tag-list");
@@ -17,13 +26,14 @@ function handleTimeTagClick(event) {
         btn.name = name;
         li.appendChild(btn);
         tagList.appendChild(li);
-        console.log(tagList);
         //const tagObj = {text: clickedTagName,}
     }
 }
 
 function deleteTag(event){
-    console.log("클릭성공",event);
+    const tag = event.target;
+    const li = tag.parentNode;
+    tagList.removeChild(li);
 }
 
 Array.from(timeTags).forEach(tag =>
