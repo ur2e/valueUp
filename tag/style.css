@@ -20,19 +20,92 @@ body {
   font-weight: 500;
   color: white;
 }
-  
+
+#tagbox-outer {
+  margin: 10px 50px 10px 50px;
+  padding: 14px 20px;
+  height: 64px;
+  border: 2px solid black;
+}
+
+.table {
+  display: table;
+  color:red;
+  border-spacing: 5px;
+}
+
+ul.horizontal-tag-list {
+  min-width: 700px;
+  list-style: none;
+  }
+
+  ul.horizontal-tag-list li{
+    display: inline-block;
+  }
+
+    ul.horizontal-tag-list #timeTag { 
+      margin: 2px;
+      text-align: center;
+      width: 100px;
+      color:whitesmoke;
+      background-color: skyblue;
+      border: 1px solid skyblue;
+      border-radius: 20px;
+      box-shadow:  0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+        ul.horizontal-tag-list #timeTag:hover{
+            color:skyblue;
+            background-color: whitesmoke;
+        }
+
+    ul.horizontal-tag-list #themeTag { 
+      margin: 2px;
+      text-align: center;
+      width: 100px;
+      color:whitesmoke;
+      background-color: #547aa5;
+      border: 1px solid #547aa5;
+      border-radius: 20px;
+      box-shadow:  0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+        ul.horizontal-tag-list #themeTag:hover{
+            color:#547aa5;
+            background-color: whitesmoke;
+        }
+
 .timeTags #timeTag {
     width: 100px;
-    background-color: #50d8d7;
+    color:skyblue;
+    background-color: whitesmoke;
+    border: 1px solid skyblue;
     border-radius: 20px;
     box-shadow:  0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
 }
+    .timeTags #timeTag:hover{
+        color:whitesmoke;
+        background-color: skyblue;
+    }
   
 .themeTags #themeTag{
     width: 100px;
-    background-color: #547aa5;
+    color: #547aa5;
+    background-color: whitesmoke;
     border-radius: 20px;
+    border: 1px solid #547aa5;
     box-shadow:  0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     margin-bottom: 10px;
+    cursor: pointer;
 }
+    .themeTags #themeTag:hover{
+        color:white;
+        background-color: #547aa5;
+    }
