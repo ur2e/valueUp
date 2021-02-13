@@ -81,7 +81,7 @@ ul.horizontal-tag-list {
         }
 
 .timeTags #timeTag {
-    width: 100px;
+    width: 200px;
     color:skyblue;
     background-color: whitesmoke;
     border: 1px solid skyblue;
@@ -97,7 +97,7 @@ ul.horizontal-tag-list {
     }
   
 .themeTags #themeTag{
-    width: 100px;
+    width: 200px;
     color: #547aa5;
     background-color: whitesmoke;
     border-radius: 20px;
@@ -112,7 +112,7 @@ ul.horizontal-tag-list {
     }
 
     #pathboxs{
-      column-width:350px;
+      column-width:230px;
       column-gap: 15px;
     }
     #pathboxs figure{
