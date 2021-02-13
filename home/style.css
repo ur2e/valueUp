@@ -81,6 +81,13 @@ ul.horizontal-tag-list {
             background-color: whitesmoke;
         }
 
+
+.elements{
+    column-width:230px;
+    column-gap: 15px;
+    column-rule: 2px solid #547aa5;
+}
+
 .timeTags #timeTag {
     width: 200px;
     color:skyblue;
@@ -125,11 +132,11 @@ ul.horizontal-tag-list {
       padding: 10px;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       position: relative;
-    }
-    #pathboxs figure img{
+}
+#pathboxs figure img{
       width:100%;
-    }
-    #pathboxs figure figcaption{
+}
+#pathboxs figure figcaption{
       color: #ffffff;
       padding: 1em;
       line-height: 1;
