@@ -18,9 +18,8 @@ function handleTagClick(event) {
     // 버튼과 버튼 사이 입력하면 undefined이 입력됨.
     if(clickedTagName !== undefined ){
             // clickedTagName을 리스트에 추가해주자
-        const name = clickedTagName;
-        if(clickedTagArr.indexOf(name) == -1){
-            clickedTagArr.push(name);
+        if(clickedTagArr.indexOf(clickedTagName) == -1){
+            clickedTagArr.push(clickedTagName);
             console.log(clickedTagArr);
             const li = document.createElement("li");
             const btn= document.createElement("button") // clickedTagName 넣어줘야함
@@ -38,7 +37,11 @@ function handleTagClick(event) {
 function deleteTag(event){
     const tag = event.target;
     const li = tag.parentNode;
+    const tagName = event.target.name;
     tagList.removeChild(li);
+    delIdx = clickedTagArr.indexOf(tagName);
+    clickedTagArr.splice(delIdx, 1);
+    
 }
 
 Array.from(timeTags).forEach(tag =>
