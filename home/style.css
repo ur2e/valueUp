@@ -112,7 +112,7 @@ ul.horizontal-tag-list {
     }
 
     #pathboxs{
-      column-width:300px;
+      column-width: 250px;
       column-gap: 15px;
     }
     #pathboxs figure{

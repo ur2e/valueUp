@@ -6,26 +6,31 @@
 태그박스리스트 아이템 : 태그제목  >> 탭하면 delete
 */
 
-
 const timeTags = document.getElementsByClassName("timeTags"),
     themeTags = document.getElementsByClassName("themeTags"),
     tagList = document.querySelector(".horizontal-tag-list");
 
-function handleTimeTagClick(event) {
+let clickedTags = document.querySelector("li");
+clickedTagArr = [];
+function handleTagClick(event) {
     const clickedTagName = event.target.name;
     const clickedTagid = event.target.id;
     // 버튼과 버튼 사이 입력하면 undefined이 입력됨.
     if(clickedTagName !== undefined ){
             // clickedTagName을 리스트에 추가해주자
-        const li = document.createElement("li");
-        const btn= document.createElement("button") // clickedTagName 넣어줘야함
-        const id = clickedTagid;
         const name = clickedTagName;
-        btn.innerText = clickedTagName;
-        btn.id = id;
-        btn.name = name;
-        li.appendChild(btn);
-        tagList.appendChild(li);
+        if(clickedTagArr.indexOf(name) == -1){
+            clickedTagArr.push(name);
+            console.log(clickedTagArr);
+            const li = document.createElement("li");
+            const btn= document.createElement("button") // clickedTagName 넣어줘야함
+            const id = clickedTagid;
+            btn.innerText = clickedTagName;
+            btn.id = id;
+            btn.name = name;
+            li.appendChild(btn);
+            tagList.appendChild(li);
+        }
         //const tagObj = {text: clickedTagName,}
     }
 }
@@ -37,11 +42,11 @@ function deleteTag(event){
 }
 
 Array.from(timeTags).forEach(tag =>
-    tag.addEventListener("click", handleTimeTagClick)
+    tag.addEventListener("click", handleTagClick)
 );
 
 Array.from(themeTags).forEach(tag =>
-    tag.addEventListener("click", handleTimeTagClick)
+    tag.addEventListener("click", handleTagClick)
 );
 
 tagList.addEventListener("click", deleteTag);
