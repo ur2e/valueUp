@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 
-#columns{
+#pathboxs{
     column-width:350px;
     column-gap: 15px;
   }
-  #columns figure{
+  #pathboxs figure{
     display: inline-table;
     border: 1px solid rgba(0, 0, 0, 0.2);
     margin: 0;
@@ -13,10 +13,10 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     position: relative;
   }
-  #columns figure img{
+  #pathboxs figure img{
     width:100%;
   }
-  #columns figure figcaption{
+  #pathboxs figure figcaption{
     color: #ffffff;
     padding: 1em;
     line-height: 1;
@@ -26,4 +26,4 @@
     width: 100%;
     font-size: xx-large;
 }
-  }
+  

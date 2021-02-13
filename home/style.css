@@ -1,4 +1,5 @@
 @import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 
 button {
     padding: 10px 20px;
@@ -109,3 +110,30 @@ ul.horizontal-tag-list {
         color:white;
         background-color: #547aa5;
     }
+
+    #pathboxs{
+      column-width:350px;
+      column-gap: 15px;
+    }
+    #pathboxs figure{
+      display: inline-table;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      margin: 0;
+      margin-bottom: 25px;
+      padding: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    #pathboxs figure img{
+      width:100%;
+    }
+    #pathboxs figure figcaption{
+      color: #ffffff;
+      padding: 1em;
+      line-height: 1;
+      font-family: 'Nanum Brush Script', cursive;
+      position: absolute;
+      top: 15px;
+      width: 100%;
+      font-size: xx-large;
+  }
