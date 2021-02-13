@@ -86,7 +86,7 @@ ul.horizontal-tag-list {
 }
 
 .timeTags #timeTag {
-    width: 100px;
+    width: 200px;
     color:skyblue;
     background-color: whitesmoke;
     border: 1px solid skyblue;
@@ -102,7 +102,7 @@ ul.horizontal-tag-list {
     }
   
 .themeTags #themeTag{
-    width: 100px;
+    width: 200px;
     color: #547aa5;
     background-color: whitesmoke;
     border-radius: 20px;
