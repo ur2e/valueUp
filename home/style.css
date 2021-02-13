@@ -1,6 +1,7 @@
 @import "reset.css";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
-
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 button {
     padding: 10px 20px;
     border: none;
@@ -81,7 +82,7 @@ ul.horizontal-tag-list {
         }
 
 .timeTags #timeTag {
-    width: 100px;
+    width: 200px;
     color:skyblue;
     background-color: whitesmoke;
     border: 1px solid skyblue;
@@ -97,7 +98,7 @@ ul.horizontal-tag-list {
     }
   
 .themeTags #themeTag{
-    width: 100px;
+    width: 200px;
     color: #547aa5;
     background-color: whitesmoke;
     border-radius: 20px;
@@ -112,7 +113,8 @@ ul.horizontal-tag-list {
     }
 
     #pathboxs{
-      column-width:350px;
+      column-count: 5;
+      column-width:230px;
       column-gap: 15px;
     }
     #pathboxs figure{
@@ -131,9 +133,21 @@ ul.horizontal-tag-list {
       color: #ffffff;
       padding: 1em;
       line-height: 1;
-      font-family: 'Nanum Brush Script', cursive;
+      /*font-family: 'Nanum Brush Script', cursive;*/
+      font-family: 'Hanna', serif;
       position: absolute;
       top: 15px;
       width: 100%;
       font-size: xx-large;
   }
+    p{
+    color: #ffffff;
+    padding: 0em;
+    line-height: 1;
+    font-family: 'Jeju Gothic', serif;
+    /*font-family: 'Nanum Brush Script', cursive;*/
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    font-size: large;
+}
