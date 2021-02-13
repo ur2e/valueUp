@@ -1,5 +1,7 @@
 @import "reset.css";
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 button {
     padding: 10px 20px;
@@ -141,9 +143,21 @@ ul.horizontal-tag-list {
       color: #ffffff;
       padding: 1em;
       line-height: 1;
-      font-family: 'Nanum Brush Script', cursive;
+      /*font-family: 'Nanum Brush Script', cursive;*/
+      font-family: 'Hanna', serif;
       position: absolute;
       top: 15px;
       width: 100%;
       font-size: xx-large;
+  }
+    p{
+    color: #ffffff;
+    padding: 0em;
+    line-height: 1;
+    font-family: 'Jeju Gothic', serif;
+    /*font-family: 'Nanum Brush Script', cursive;*/
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    font-size: large;
 }
