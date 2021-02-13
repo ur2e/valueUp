@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+
 #columns{
-    column-width: 350px;
+    column-width:350px;
     column-gap: 15px;
-}
-#columns figure{
+  }
+  #columns figure{
     display: inline-table;
     border: 1px solid rgba(0, 0, 0, 0.2);
     margin: 0;
@@ -11,15 +12,11 @@
     padding: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     position: relative;
-}
-
- #columns figure img jsimg{
-    width: 100%;   
-}
-/*#columns figure*/ figcaption{
-    /*border-top: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    margin-top: 11px;*/
+  }
+  #columns figure img{
+    width:100%;
+  }
+  #columns figure figcaption{
     color: #ffffff;
     padding: 1em;
     line-height: 1;
@@ -29,14 +26,4 @@
     width: 100%;
     font-size: xx-large;
 }
-h1.txxt {
-    color: #000000;
-    padding: 1em;
-    line-height: 1;
-    font-family: 'Nanum Brush Script', cursive;
-    position: absolute;
-    top: 60px;
-    left: 26px;
-    width: 100%;
-    font-size: large;
-}
+  }
