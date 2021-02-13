@@ -1,15 +1,21 @@
 state = 0;
 
-function ClickImg() {
-  var element = document.getElementById("jsimg")
-  var vvalue = document.getElementById("jsimg").value;
+const element = document.getElementById("pathboxs")
 
-  console.log(vvalue);
-  if(state%2 == 0) {
-      element.style.opacity = 0.5;
-    }
-  else {
-      element.style.opacity = 1;
-    }
-  state = state+1; 
+function ClickImg() {
+  const clickimgname = event.target.name; 
+  const minielement = event.target;
+
+  //이미지들 각각 인식 성공. clickimgname의 이미지가
+  //opacity 0.5면 1로 바꾸고 1이면 0으로 바꾸기.
+
+  if(minielement.style.opacity == 0.5){
+    minielement.style.opacity = 1;
+  } else {
+    minielement.style.opacity = 0.5;
+  }
 }
+
+Array.from(pathboxs).forEach(tag =>
+  tag.addEventListener("click", ClickImg)
+);
