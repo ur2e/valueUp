@@ -79,12 +79,8 @@ ul.horizontal-tag-list {
             color:#547aa5;
             background-color: whitesmoke;
         }
-
-
-.elements{
-    column-width:230px;
-    column-gap: 15px;
-    column-rule: 2px solid #547aa5;
+.tag{
+  display: inline-block;
 }
 
 .timeTags #timeTag {
@@ -118,6 +114,14 @@ ul.horizontal-tag-list {
         background-color: #547aa5;
     }
 
+/*
+.elements{
+      column-width:230px;
+      column-gap: 15px;
+      column-rule: 2px solid red;
+}
+*/
+
 #pathboxs figure{
       display: inline-table;
       border: 1px solid rgba(0, 0, 0, 0.2);
@@ -127,9 +131,12 @@ ul.horizontal-tag-list {
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       position: relative;
 }
+
 #pathboxs figure img{
-      width:100%;
+      width: 250px;
 }
+
+
 #pathboxs figure figcaption{
       color: #ffffff;
       padding: 1em;
