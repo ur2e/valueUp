@@ -123,41 +123,33 @@ ul.horizontal-tag-list {
       column-rule: 2px solid red;
 }
 */
-
-#pathboxs figure{
-      display: inline-table;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      margin: 0;
-      margin-bottom: 25px;
-      padding: 10px;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-      position: relative;
+* { 
+  margin : 0px;
+  padding : 0px;
 }
 
-#pathboxs figure img{
-      width: 250px;
+.item  {
+  width : 150px;
+  margin : 10px;   
+  background-color : #FFFFFF;
+  border-radius : 4px;
+  float : left;
+  box-shadow : 5px 5px 10px #000000;
 }
 
+.big { width: 320px; }
+.big > img { width: 320px; }
 
-#pathboxs figure figcaption{
-      color: #ffffff;
-      padding: 1em;
-      line-height: 1;
-      /*font-family: 'Nanum Brush Script', cursive;*/
-      font-family: 'Hanna', serif;
-      position: absolute;
-      top: 15px;
-      width: 100%;
-      font-size: xx-large;
-  }
-    p{
-    color: #ffffff;
-    padding: 0em;
-    line-height: 1;
-    font-family: 'Jeju Gothic', serif;
-    /*font-family: 'Nanum Brush Script', cursive;*/
-    position: absolute;
-    top: 15px;
-    width: 100%;
-    font-size: large;
+.item > .bottom {
+
+  padding-left : 10px;
+  padding-right : 10px;
+  position : relative;
+  bottom : 10px;
+}
+
+.item > .bottom > img  {
+
+  position : relative;
+  left : 21px;
 }

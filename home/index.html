@@ -6,15 +6,34 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="style.css" />
         <title>TAGBOX</title>
+        
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="./masonry.pkgd.min.js"></script>
         <script type="text/javascript">
-            jQuery(document).ready(function () {
-                jQuery("#masonry_container").masonry({
-                      itemSelector : ".jsimg"
-                    , columnWidth : 110
-                });
-            });
+        jQuery(document).ready(function () {
+
+        // masonry플러그인을 적용합니다.
+jQuery("#masonry_container").masonry({
+      itemSelector : ".item"
+    , columnWidth : 170
+    , isAnimated : true
+});
+
+// 이벤트를 연결합니다.
+jQuery(".item").on("click", function() {
+
+    // 클릭한 대상을 제거합니다.
+    jQuery("#masonry_container").masonry("remove", jQuery(this));
+    jQuery("#masonry_container").masonry("reload");
+});
+
+jQuery("#add_button").click(function() {
+
+    // 2배로 복제합니다.
+    var item = jQuery("#masonry_container").children().clone();
+    jQuery("#masonry_container").append(item).masonry("appended", item, true);
+});
+});
         </script>
     </head>
     <body>
@@ -35,36 +54,97 @@
                 <button type="button" id="themeTag" name="long">long</button>
             </div>
         </div>
-        <div class="elements">
-            <div id="pathboxs"> 
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="a" src="../assets/hanriver1.jpg">
-                    <figcaption>한강 나들이<p><br><br><br><br>#박물관 #한강 #야경<br> #힐링 #역사<br>소요시간 : 15분-4시간<br>난이도 : 하</p></figcaption>
-                </figure>
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="b" src="../assets/food1.jpg">
-                      <figcaption></figcaption>
-                </figure>
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="b" src="../assets/ancient1.jpg">
-                      <figcaption>역사문화즐기기<p><br><br><br><br>#박물관 #재래시장 <br>#역사<br>소요시간 : 20분-5시간<br>난이도 : 상</p></figcaption>
-                </figure>
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="b" src="../assets/moon1.jpg">
-                      <figcaption></figcaption>
-                </figure>
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="b" src="../assets/moon1.jpg">
-                      <figcaption></figcaption>
-                </figure>
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="b" src="../assets/02.png">
-                      <figcaption>앵무새는 <br>몬생겼어</figcaption>
-                </figure>
-                <figure>
-                    <img id="jsimg" style="opacity : 1" onclick="ClickImg()" name="b" src="../assets/namsan1.jpg">
-                    <figcaption>남산 야경<p><br><br><br><br>#남산 #식물원 #전시회 <br>#야경 #힐링<br>소요시간 : 35분-3시간<br>난이도 : 중</p></figcaption>
-                </figure>
+        <div id = "masonry_container">
+            <div class = "item">
+                <img src = "./image/cj1.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>consectetur adipiscing elit</p>               
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj2.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div>
+            </div>
+            <div class = "item big">
+                <img src = "./image/cj3.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>Vivamus tempus molestie sagittis. Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj4.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>et mollis diam pretium quis</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj5.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>Quisque imperdiet, libero vitae</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj6.jpg"/>
+                <div class = "bottom">
+                    <img src="./image/top.png"/>
+                    <p>dignissim vestibulum, neque dui pharetra odio</p>
+                </div>
+            </div>
+            <div class = "item big">
+                <img src = "./image/cj7.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>dignissim, sem justo dictum mauris, non fringilla urna</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj8.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>ligula tortor fringilla purus, varius faucibus mauris sem eget diam.</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj9.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>Lorem ipsum</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj10.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>vel mauris. Donec vitae ipsum at risus</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj11.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>Nulla posuere, neque vel bibendum dignissim, sem justo dictum mauris,</p>
+                </div>
+            </div>
+            <div class = "item">
+                <img src = "./image/cj12.jpg"/>
+                <div class = "bottom">
+                    <img src = "./image/top.png"/>
+                    <p>consectetur porta id at diam. Maecenas malesuada, tortor et fringilla consequat,</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="./image/cj13.jpg"/>
+                <div class="bottom">
+                    <img src="./image/top.png"/>
+                    <p>Praesent nec faucibus dui. Vestibulum ante ipsum primis </p>
+                </div>
             </div>
         </div>
         <script src="tagbox.js"></script>
