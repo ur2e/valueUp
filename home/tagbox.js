@@ -47,12 +47,12 @@ function handleTagClick(event) {
              */
             console.log(allPath);
             for(var i=0; i < allPath.length; i++){
-                if(allPath.length[-1] === " "){
-                    temp = allPath[i].s
-                }
-                if(JSON.stringify(clickedTagArr).includes(JSON.stringify(allPath[i]))){
-                  console.log(i);
-                }
+                    var temp = allPath[i].split(" ");
+                    for(var j=0; j<temp.length; j++){
+                        if(JSON.stringify(clickedTagArr).includes(JSON.stringify(temp[j]))){
+                            console.log(i);
+                          }
+                    }
               }
         }
         //const tagObj = {text: clickedTagName,}
