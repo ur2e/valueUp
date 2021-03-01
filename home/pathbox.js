@@ -2,6 +2,7 @@ state = 0;
 
 const element = document.getElementById("pathboxs")
 
+
 function ClickImg() {
   const clickimgname = event.target.name; 
   const minielement = event.target;

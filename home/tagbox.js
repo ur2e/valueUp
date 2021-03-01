@@ -10,6 +10,18 @@ const timeTags = document.getElementsByClassName("timeTags"),
     themeTags = document.getElementsByClassName("themeTags"),
     tagList = document.querySelector(".horizontal-tag-list");
 
+const pathItems = document.querySelector("#masonry_container");
+const paths = pathItems.getElementsByClassName("item");
+const temp = pathItems.children[0];
+
+
+var allPath = [];
+
+Array.from(paths).forEach(function(item){
+    allPath.push(item.getAttribute("name"));
+})
+
+
 let clickedTags = document.querySelector("li");
 clickedTagArr = [];
 function handleTagClick(event) {
@@ -29,6 +41,19 @@ function handleTagClick(event) {
             btn.name = name;
             li.appendChild(btn);
             tagList.appendChild(li);
+
+            /*
+             *  clickedTagArr - allPath  비교하기
+             */
+            console.log(allPath);
+            for(var i=0; i < allPath.length; i++){
+                if(allPath.length[-1] === " "){
+                    temp = allPath[i].s
+                }
+                if(JSON.stringify(clickedTagArr).includes(JSON.stringify(allPath[i]))){
+                  console.log(i);
+                }
+              }
         }
         //const tagObj = {text: clickedTagName,}
     }
